@@ -1,0 +1,105 @@
+body{
+    background-color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.grid{
+    width:  90%;
+    max-width: 60rem;
+    margin: auto;
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(12.5rem , 1fr));
+    gap: 1rem;
+
+}
+
+.grid .img{
+    cursor: pointer;
+    transition: all .5s ease;
+    height: 100%;
+    box-shadow: 0 0 0.9rem 0 rgba(0, 0, 0, 0.25) ;
+    border-radius: 2%;
+
+    
+}
+
+.grid .img:hover{
+    transform: scale(.95);
+
+}
+
+.grid .img:active{
+    transform: scale(1.1);
+
+}
+
+.lightbox{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+    backdrop-filter: blur(2rem);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+ 
+
+    gap: 1rem;
+
+    opacity:0;
+    pointer-events: none;
+    transition: all .5s ease;
+}
+
+.lightbox.isActive{
+    opacity: 1;
+    pointer-events: auto;
+
+}
+
+.lightbox .close{
+   color: #ffffff;
+   width: 3rem;
+   cursor: pointer;
+   transition: .5s ease;
+  
+}
+
+.lightbox .close:hover{
+    transform: scale(1.2) ;
+    
+   
+ }
+
+ .lightbox .close:active{
+    transform: scale(1.1);
+ }
+
+.lightbox .svg{
+color:none;
+
+}
+
+.lightbox .grande{
+    width: 90%;
+    max-width: 900px;
+    height: 70vh;
+    box-shadow: 0 0 2rem 0 rgba(0,0,0,.4) ;
+}
+
+
+
+ 

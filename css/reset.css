@@ -1,0 +1,185 @@
+@charset "UTF-8";
+/*
+
+  Con este reset vamos a resolver:
+    👉 Unificar el uso de Custom Properties
+    👉 Problemas de box-model más generales
+    👉 Problemas con imagenes, vídeos e iconos svg
+    👉 Problemas con tipografías y etiquetas input en formularios
+    👉 Unificar la tipografía de todas las etiquetas de una web
+
+*/
+
+/* Reseteamos la tipografía por defecto para todos los navegadores */
+:root {
+  font-size : 100% ;                  /* Configuramos el tamaño definido por el usuario     */
+  font-family: system-ui, sans-serif; /* Configuramos la tipografía definida por el usuario */
+  scroll-behavior : smooth ;          /* Configuramos anclas suaves */
+  
+  /* (Opcional) Aquí definimos las custom properties */
+
+}
+
+/* (Opcional) Las adaptamos al modo oscuro */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --tu-propia-variable: #ececec;
+  }
+} */
+/* (Opcional) Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* 
+@media (prefers-contrast: high){
+  :root{
+  --tu-propia-variable: #ececec;}
+} 
+*/
+  
+/* (Opcional) Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+/* 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+} 
+  */
+/* Reseteamos los margin y paddings de todas las etiquetas */
+* , *::before , *::after{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+*::before , *::after{
+  display: block;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure , canvas{
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  height: initial;
+  /* (Opcional) */ -o-object-fit: cover;
+  /* (Opcional) */ object-fit: cover;
+  /* (Opcional) */ -o-object-position: center center;
+  /* (Opcional) */ object-position: center center;
+}
+
+/* Anchors: Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li , menu, summary {
+  list-style: none;
+}
+/* Evita que listas anidadas sigan numerando desde el padre en Firefox. */
+ol{
+  counter-reset: revert;
+}
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em, mark, del, pre, code {
+  font:inherit;
+  color: inherit;
+  text-decoration: none;
+  text-wrap: pretty;
+}
+mark{
+  background-color: transparent;
+}
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+/* (Opcional): Configuramos el texto que seleccionamos */
+/* ::-moz-selection {
+  background-color: var(--tu-propia-variable);
+  color: var(--blanco);
+}
+::selection {
+  background-color: var(--tu-propia-variable);
+  color: var(--blanco);
+} */
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font: inherit;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* (Opcional) */ -webkit-hyphens: auto;
+  /* (Opcional) */ -ms-hyphens: auto;
+  /* (Opcional) */ hyphens: auto;
+  /* (Opcional) */ -webkit-appearance: none;
+  /* (Opcional) */ -moz-appearance: none;
+  /* (Opcional) */ appearance: none;
+}
+/* Safari tiene un bug en textarea donde white-space: revert; puede causar colapsos en contenido largo */
+textarea {
+  white-space: pre-wrap;
+}
+/* Añadimos el cursor y evitamos problemas con display:revert en algunos navegadores */
+button , label{
+  cursor: pointer;
+}
+/* Elimina el color predeterminado de los placeholders */
+::placeholder {
+  color: unset;
+}
+/* Reseteamos las tablas */
+table, tr, td , th, thead, tbody, tfoot{
+  border-collapse: collapse;
+  border-spacing: 0;
+  font:inherit;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+p svg{
+  display: inline;
+  width: initial;
+}
+/* Corrige un bug en Chrome para contenteditable */
+:where([contenteditable]:not([contenteditable="false"])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  /* -webkit-line-break: after-white-space;
+  -webkit-user-select: auto; */
+}
+/* Hace que los elementos arrastrables se comporten correctamente en Safari */
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  color:inherit;
+  line-height: 1.5em;
+  /* opcional */
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  /* opcional */
+  font-smooth: always;
+  /* opcional */
+  -webkit-font-smoothing: antialiased;
+  /* opcional */
+  -moz-osx-font-smoothing: grayscale;
+}
